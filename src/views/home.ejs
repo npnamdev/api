@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,100;0,200;0,300;0,400;0,500;1,100;1,200;1,300;1,400&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="./css/style.css">
+    <title>TodoApp</title>
+</head>
+
+<body>
+    <div id="wrapper">
+        <div class="title">
+            <span>Thực Đơn</span>
+            <p>19035514534038(teckcombank)</p>
+        </div>
+        <ul class="list-task">
+            <% listTask.map((task, index)=>{ %>
+                <li>
+                    <span class="item">
+                        <%= task.message %>
+                    </span>
+
+                    <form action="/delete/<%= task._id %>" method="POST" class="delete-form">
+                        <input type="hidden" name="id" value=<%=task._id %>>
+                        <button type="submit" class="btn-delete">
+                            <i class='bx bx-trash'></i>
+                        </button>
+                    </form>
+                </li>
+                <% }); %>
+        </ul>
+
+        <form class="form-add" action="/create" method="POST" class="col-4 ">
+            <input type="text" name="message" placeholder="Nhập thực đơn mới" required autofocus>
+            <button type="submit" class="btn btn-success w-100">Thêm</button>
+        </form>
+    </div>
+
+
+</body>
+
+</html>
